@@ -1,0 +1,118 @@
+{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset134 Microsoft YaHei Mono;}{\f1\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red255\green0\blue0;\red0\green0\blue255;\red255\green0\blue255;\red128\green128\blue0;}
+{\*\generator Msftedit 5.41.15.1507;}\viewkind4\uc1\pard\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf1\lang2052\f0\fs18\'b2\'e2\'ca\'d4\'b7\'bd\'b7\'a8 (2016-03-29 11:18:43)\par
+\pard\li400\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf2 0\'a1\'a2\'d0\'d4\'c4\'dc\'bc\'e0\'bf\'d8\'c3\'fc\'c1\'ee\'a3\'a810\'c3\'eb\'d2\'bb\'b4\'ce\'a3\'ac200\'b7\'d6\'d6\'d3\'a3\'a9\cf0\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360 nmon -fT -s 10 -c 1200\par
+\cf1\par
+\pard\li400\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf2 1\'a1\'a2\'b0\'b2\'d7\'b0\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0 # wget {\field{\*\fldinst{HYPERLINK "http://imysql.com/wp-content/uploads/2014/09/sysbench-0.4.12-1.1.tgz"}}{\fldrslt{\ul\cf2 http://imysql.com/wp-content/uploads/2014/09/sysbench-0.4.12-1.1.tgz}}}\f0\fs18\par
+# wget {\field{\*\fldinst{HYPERLINK "https://codeload.github.com/akopytov/sysbench/zip/0.5"}}{\fldrslt{\ul\cf2 https://codeload.github.com/akopytov/sysbench/zip/0.5}}}\f0\fs18  -o sysbench-0.5.zip\par
+\par
+yum install -y autoconf automake libtool m4\par
+\par
+wget {\field{\*\fldinst{HYPERLINK "http://10.0.42.1:4201/soft/sysbench-0.5.zip"}}{\fldrslt{\ul\cf2 http://10.0.42.1:4201/soft/sysbench-0.5.zip}}}\f0\fs18  \par
+unzip sysbench-0.5.zip\par
+cd ./sysbench-0.5\par
+./autogen.sh \par
+./configure --with-mysql-includes=/usr/include/mysql/ --with-mysql-libs=/usr/lib/mysql/ --with-mysql\par
+\par
+\pard\li400\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf2 2\'a1\'a2\'b2\'e2\'ca\'d4\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-200\li1000\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf3 1\'a1\'a2cpu\'d0\'d4\'c4\'dc\'b2\'e2\'ca\'d4\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0 sysbench --test=cpu --cpu-max-prime=20000 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     events (avg/stddev):           10000.0000/0.00                                                                                                                            \par
+    execution time (avg/stddev):   24.3459/0.00                                                                                                                               \par
+\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-200\li1000\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf3 2\'a1\'a2\'cf\'df\'b3\'cc\'b2\'e2\'ca\'d4\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0 sysbench --test=threads --num-threads=64 --thread-yields=100 --thread-locks=2 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     events (avg/stddev):           156.2500/8.50     \par
+    execution time (avg/stddev):   0.8594/0.00       \par
+\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-200\li1000\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf3 3\'a1\'a2\'b4\'c5\'c5\'ccIO\'d0\'d4\'c4\'dc\'b2\'e2\'ca\'d4\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\b # \'c9\'fa\'b3\'c9\'b2\'e2\'ca\'d4\'d3\'c3\'b5\'bd\'b5\'c4\'ca\'fd\'be\'dd\'ce\'c4\'bc\'fe\par
+\b0 mkdir -p /u02/file/ && cd /u02/file/\par
+sysbench --test=fileio --file-total-size=150G prepare\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4 161061273600 bytes written in 163.85 seconds (937.46 MB/sec).\par
+\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\b # 3.1 \'ce\'c4\'bc\'feI/O\'bb\'ec\'ba\'cf\'cb\'e6\'bb\'fa\'b6\'c1/\'d0\'b4\'bb\'f9\'d7\'bc\'b2\'e2\'ca\'d4(16\'b8\'f6\'cf\'df\'b3\'cc)\par
+\b0 sysbench --test=fileio --file-total-size=150G --file-test-mode=rndrw --init-rng=on --max-time=300 --max-requests=0 --num-threads=16 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4 Read 73.688Gb  Written 49.125Gb  Total transferred 122.81Gb  (419.2Mb/sec)\par
+26828.95 Requests/sec executed\par
+\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\b # 3.2 \'ce\'c4\'bc\'feI/O\'bb\'ec\'ba\'cf\'cb\'e6\'bb\'fa\'b6\'c1/\'d0\'b4\'bb\'f9\'d7\'bc\'b2\'e2\'ca\'d4(1\'b8\'f6\'cf\'df\'b3\'cc)\par
+\b0 sysbench --test=fileio --file-total-size=150G --file-test-mode=rndrw --init-rng=on --max-time=300 --max-requests=0 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4 Read 22.041Gb  Written 14.694Gb  Total transferred 36.736Gb  (125.39Mb/sec)\par
+ 8025.02 Requests/sec executed\par
+\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\b # \'c7\'e5\'b3\'fd\'b5\'da\'d2\'bb\'b2\'bd\'c9\'fa\'b3\'c9\'b5\'c4\'b2\'e2\'ca\'d4\'ce\'c4\'bc\'fe\par
+\b0 sysbench --test=fileio --file-total-size=150G cleanup\par
+\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-200\li1000\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf3 4\'a1\'a2\'c4\'da\'b4\'e6\'b2\'e2\'ca\'d4\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0 sysbench --test=memory --memory-block-size=8k --memory-total-size=4G run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     events (avg/stddev):           524288.0000/0.00\par
+    execution time (avg/stddev):   0.3169/0.00\par
+\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-200\li1000\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf3 5\'a1\'a2OLTP\'b2\'e2\'ca\'d4\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\b # \'c9\'fa\'b3\'c9\'d2\'bb\'d5\'c5\'b3\'ac\'b9\'fd\'b0\'d9\'cd\'f2\'d0\'d0\'bc\'c7\'c2\'bc\'b5\'c4\'b1\'ed\par
+\b0 cd /root/sysbench-0.5\par
+sysbench --test=sysbench/tests/db/oltp.lua --oltp-table-size=1000000 \\\par
+  --mysql-db=test1 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 prepare\par
+\par
+\b # 5.1 \'c0\'fd\'d7\'d3\'d6\'d0\'b2\'c9\'d3\'c38\'b8\'f6\'b2\'a2\'b7\'a2\'cf\'df\'b3\'cc\'a3\'ac\'d6\'bb\'b6\'c1\'c4\'a3\'ca\'bd\'a3\'ac\'b2\'e2\'ca\'d4\'ca\'b1\'b3\'a4300\'c3\'eb\par
+\b0 sysbench --test=sysbench/tests/db/oltp.lua --oltp-table-size=1000000 \\\par
+  --mysql-db=test1 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --max-time=300 --oltp-read-only=on --max-requests=0 --num-threads=8 --report-interval=10 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     transactions:                        1288699 (4295.64 per sec.)\par
+    read/write requests:                 18041786 (60138.93 per sec.)\par
+    other operations:                    2577398 (8591.28 per sec.)\par
+\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\b # 5.2 \'b1\'ed\'ca\'be\'b2\'bb\'d2\'aa\'bd\'f8\'d0\'d0\'d6\'bb\'b6\'c1\'b2\'e2\'ca\'d4\'a3\'ac\'d2\'b2\'be\'cd\'ca\'c7\'bb\'e1\'b2\'c9\'d3\'c3\'b6\'c1\'d0\'b4\'bb\'ec\'ba\'cf\'c4\'a3\'ca\'bd\'b2\'e2\'ca\'d4\par
+\b0 sysbench --test=sysbench/tests/db/oltp.lua --oltp-table-size=1000000 \\\par
+  --mysql-db=test1 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --max-time=300 --oltp-read-only=off --max-requests=0 --num-threads=8 --report-interval=10 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     transactions:                        1095060 (3650.18 per sec.)\par
+    read/write requests:                 19711080 (65703.23 per sec.)\par
+    other operations:                    2190120 (7300.36 per sec.)\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\par
+\b # 5.3 \'c4\'a3\'c4\'e2\'b6\'d410\'b8\'f6\'b1\'ed\'b2\'a2\'b7\'a2OLTP\'b2\'e2\'ca\'d4\'a3\'ac\'c3\'bf\'b8\'f6\'b1\'ed1000\'cd\'f2\'d0\'d0\'bc\'c7\'c2\'bc\'a3\'ac\'b3\'d6\'d0\'f8\'d1\'b9\'b2\'e2\'ca\'b1\'bc\'e4\'ce\'aa 5 \'b7\'d6\'d6\'d3(\'b7\'d6\'c1\'bd\'b2\'bd\'a3\'ac\'cf\'c8\'c9\'fa\'b3\'c9\'ca\'fd\'be\'dd\'a3\'ac\'d4\'d9\'b2\'e2\'ca\'d4)\b0\par
+sysbench --test=sysbench/tests/db/oltp.lua --oltp_tables_count=10 --oltp-table-size=1000000 \\\par
+  --mysql-db=test2 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --rand-init=on prepare\par
+\par
+sysbench --test=sysbench/tests/db/oltp.lua --oltp_tables_count=10 --oltp-table-size=1000000 \\\par
+  --mysql-db=test2 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --max-time=300 --oltp-read-only=off --max-requests=0 --num-threads=8 --report-interval=10 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     transactions:                        1089739 (3632.44 per sec.)\par
+    read/write requests:                 19615302 (65383.88 per sec.)\par
+    other operations:                    2179478 (7264.88 per sec.)\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\par
+\b # 5.4 select \'b2\'e2\'ca\'d4\par
+\b0 sysbench --test=sysbench/tests/db/select.lua --oltp_tables_count=10 --oltp-table-size=1000000 \\\par
+  --mysql-db=test2 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --max-time=60 --oltp-read-only=off --max-requests=0 --num-threads=8 --report-interval=10 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     transactions:                        0      (0.00 per sec.)\par
+    read/write requests:                 8657756 (144295.80 per sec.)\par
+    other operations:                    0      (0.00 per sec.)\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\par
+\b # 5.5 update \'b2\'e2\'ca\'d4\par
+\b0 sysbench --test=sysbench/tests/db/update_index.lua --oltp_tables_count=10 --oltp-table-size=1000000 \\\par
+  --mysql-db=test2 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --max-time=60 --oltp-read-only=off --max-requests=0 --num-threads=8 --report-interval=10 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     transactions:                        0      (0.00 per sec.)\par
+    read/write requests:                 5774593 (96243.08 per sec.)\par
+    other operations:                    0      (0.00 per sec.)\par
+\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\b # 5.6 insert \'b2\'e2\'ca\'d4\par
+\b0 sysbench --test=sysbench/tests/db/insert.lua --oltp_tables_count=10 --oltp-table-size=1000000 \\\par
+  --mysql-db=test2 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --max-time=60 --oltp-read-only=off --max-requests=0 --num-threads=8 --report-interval=10 run\par
+\pard\li1600\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf4     transactions:                        0      (0.00 per sec.)\par
+    read/write requests:                 5373441 (89557.18 per sec.)\par
+    other operations:                    0      (0.00 per sec.)\par
+\pard\li1200\sl240\slmult1\tx105\tx210\tx315\tx420\tx525\tx630\tx735\tx840\tx945\tx1050\tx1155\tx1260\tx1365\tx1470\tx1575\tx1680\tx1785\tx1890\tx1995\tx2100\tx2205\tx2310\tx2415\tx2520\tx2625\tx2730\tx2835\tx2940\tx3045\tx3150\tx3255\tx3360\cf0\par
+\b # \'c9\'be\'b3\'fd\'b1\'ed\par
+\b0 sysbench --test=sysbench/tests/db/oltp.lua --oltp_tables_count=10 --oltp-table-size=1000000 --mysql-table-engine=innodb \\\par
+  --mysql-db=test2 --mysql-user=ggs --mysql-password=Passwordxxx --mysql-port=3306 \\\par
+  --mysql-socket=/tmp/mysql.sock cleanup\par
+\par
+}
+ 

@@ -1,0 +1,166 @@
+1.nmon analyser v50_2.xlsm
+   根据nmon收集的.nmon文件生成excel的 宏
+
+2.nmonanal_0.1.2.jar
+   打开 sf104041_160404_1345.nmon 生成图表的可执行jar
+   
+
+
+
+
+1、下载nmon
+http://nmon.sourceforge.net/
+根据服务器下载相应版本或源码安装
+2、数据采集
+比较懒，采集方式直接网上copy
+#nmon -s10 -c60 -f -m /home/
+参数解释：
+-s10 每 10 秒采集一次数据。
+-c60 采集 60 次，即为采集十分钟的数据。
+-f 生成的数据文件名中包含文件创建的时间。
+-m 生成的数据文件的存放目录。
+这样就会生成一个 nmon 文件，并每十秒更新一次，直到十分钟后。
+生成的文件名如： _090824_1306.nmon ，”” 是这台主机的主机名。
+nmon -h查看更多帮助信息。
+3、生成报表工具
+都说分析工具在这里下载（https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/Power%20Systems/page/nmon_analyser），但是IBM维护还是出故障了，链接打不开，千辛万苦找来了Java版的，http://sourceforge.net/projects/jnmonanalyser/
+下载nmonanal_0.1.2.jar，把服务器上生成日志的文件下载到本地，运行分析工具
+1
+java -jar /path/to/nmonanal_0.1.2.jar
+在菜单选择加载nmon监控日志即可看到监控报表
+4、自动按天采集监控数据
+
+mkdir /home/nmonlog
+vi /etc/cron.daily/nmonlog
+// 输入内容设置10秒钟保存一次，执行一天
+nmon -s 10 -c 8640 -f -m /home/nmonlog/
+
+// 保存后改权限
+chmod u+x /etc/cron.daily/nmonlog
+
+要看下crontab的时间设置
+
+ cat /etc/crontab
+
+
+
+
+
+
+
+
+
+
+Hint: nmon [-h] [-s <seconds>] [-c <count>] [-f -d <disks> -t -r <name>] [-x]
+
+	-h            FULL help information
+	Interactive-Mode:
+	read startup banner and type: "h" once it is running
+	For Data-Collect-Mode (-f)
+	-f            spreadsheet output format [note: default -s300 -c288]  #电子表格输出
+	optional
+	-s <seconds>  between refreshing the screen [default 2]  #刷新时间
+	-c <number>   of refreshes [default millions]    #总次数
+	-d <disks>    to increase the number of disks [default 256]    #增加磁盘数量
+	-t            spreadsheet includes top processes  #电子表格包括顶部过程
+	-x            capacity planning (15 min for 1 day = -fdt -s 900 -c 96)   #容量规划
+
+Version - nmon 14g
+
+For Interactive-Mode
+	-s <seconds>  time between refreshing the screen [default 2]
+	-c <number>   of refreshes [default millions]
+	-g <filename> User Defined Disk Groups [hit g to show them]
+	              - file = on each line: group_name <disks list> space separated
+	              - like: database sdb sdc sdd sde
+	              - upto 64 disk groups, 512 disks per line
+	              - disks can appear more than once and in many groups
+	-b            black and white [default is colour]
+	example: nmon -s 1 -c 100
+
+For Data-Collect-Mode = spreadsheet format (comma separated values)
+	Note: use only one of f,F,z,x or X and make it the first argument
+	-f            spreadsheet output format [note: default -s300 -c288]
+			 output file is <hostname>_YYYYMMDD_HHMM.nmon
+	-F <filename> same as -f but user supplied filename
+	-r <runname>  used in the spreadsheet file [default hostname]
+	-t            include top processes in the output
+	-T            as -t plus saves command line arguments in UARG section
+	-s <seconds>  between snap shots
+	-c <number>   of snapshots before nmon stops
+	-d <disks>    to increase the number of disks [default 256]
+	-l <dpl>      disks/line default 150 to avoid spreadsheet issues. EMC=64.
+	-g <filename> User Defined Disk Groups (see above) - see BBBG & DG lines
+	-N            include NFS Network File System
+	-I <percent>  Include process & disks busy threshold (default 0.1)
+	              don't save or show proc/disk using less than this percent
+	-m <directory> nmon changes to this directory before saving to file
+	example: collect for 1 hour at 30 second intervals with top procs
+		 nmon -f -t -r Test1 -s30 -c120
+
+	To load into a spreadsheet:
+	sort -A *nmon >stats.csv
+	transfer the stats.csv file to your PC
+	Start spreadsheet & then Open type=comma-separated-value ASCII file
+	 The nmon analyser or consolidator does not need the file sorted.
+
+Capacity planning mode - use cron to run each day
+	-x            sensible spreadsheet output for CP =  one day
+	              every 15 mins for 1 day ( i.e. -ft -s 900 -c 96)
+	-X            sensible spreadsheet output for CP = busy hour
+	              every 30 secs for 1 hour ( i.e. -ft -s 30 -c 120)
+
+Interactive Mode Commands
+	key --- Toggles to control what is displayed ---
+	h   = Online help information
+	r   = Machine type, machine name, cache details and OS version + LPAR
+	c   = CPU by processor stats with bar graphs
+	l   = long term CPU (over 75 snapshots) with bar graphs
+	m   = Memory stats
+	L   = Huge memory page stats
+	V   = Virtual Memory and Swap stats
+	k   = Kernel Internal stats
+	n   = Network stats and errors
+	N   = NFS Network File System
+	d   = Disk I/O Graphs
+	D   = Disk I/O Stats
+	o   = Disk I/O Map (one character per disk showing how busy it is)
+	o   = User Defined Disk Groups
+	j   = File Systems 
+	t   = Top Process stats use 1,3,4,5 to select the data & order
+	u   = Top Process full command details
+	v   = Verbose mode - tries to make recommendations
+	b   = black and white mode (or use -b option)
+	.   = minimum mode i.e. only busy disks and processes
+
+	key --- Other Controls ---
+	+   = double the screen refresh time
+	-   = halves the screen refresh time
+	q   = quit (also x, e or control-C)
+	0   = reset peak counts to zero (peak = ">")
+	space = refresh screen now
+
+Startup Control
+	If you find you always type the same toggles every time you start
+	then place them in the NMON shell variable. For example:
+	 export NMON=cmdrvtan
+
+Others:
+	a) To you want to stop nmon - kill -USR2 <nmon-pid>
+	b) Use -p and nmon outputs the background process pid
+	c) To limit the processes nmon lists (online and to a file)
+	   Either set NMONCMD0 to NMONCMD63 to the program names
+	   or use -C cmd:cmd:cmd etc. example: -C ksh:vi:syncd
+	d) If you want to pipe nmon output to other commands use a FIFO:
+	   mkfifo /tmp/mypipe
+	   nmon -F /tmp/mypipe &
+	   grep /tmp/mypipe
+	e) If nmon fails please report it with:
+	   1) nmon version like: 14g
+	   2) the output of cat /proc/cpuinfo
+	   3) some clue of what you were doing
+	   4) I may ask you to run the debug version
+
+	Developer Nigel Griffiths
+	Feedback welcome - on the current release only and state exactly the problem
+	No warranty given or implied.
